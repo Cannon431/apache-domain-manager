@@ -1,0 +1,36 @@
+#!/usr/bin/python3
+
+import sys
+import os
+
+from platform import system
+from exceptions import UnknownCommandError, WrongOSError
+from functions import create, remove, ls
+
+
+def main():
+    if system() != 'Linux':
+        raise WrongOSError('This utility working only on Linux platform!')
+
+    args = sys.argv[1:]
+    command = args[0].lower()
+
+    os.system('clear')
+
+    if command == 'create':
+        domain = args[1].strip()
+        create(domain)
+    elif command == 'remove':
+        domain = args[1].strip()
+        remove(domain)
+    elif command == 'ls':
+        ls()
+    else:
+        raise UnknownCommandError('Unknown command "' + command + '"!')
+
+
+if __name__ == '__main__':
+    try:
+        main()
+    except Exception as e:
+        print('\033[91m', e)
