@@ -23,4 +23,4 @@ Shows list of domains from ```APACHE_SITE_CONFIGS_DIR``` except files in ```LS_I
 $ python3 adm ls
 ```
 
-Check constants.py file to configure application.
+Check ```constants.py``` file to configure application.
