@@ -37,7 +37,7 @@ def create(domain):
     with open(HOSTS_FILE, 'a') as f:
         f.write('\n' + IP_ADDRESS + ' ' + domain)
 
-    os.system('sudo chmod -R 777 ' + DOMAINS_DIR)
+    os.system('sudo chmod -R 777 ' + domain_dir)
 
     print('\033[92m Domain "{}" successfully created!'.format(domain))
 

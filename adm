@@ -11,11 +11,23 @@ from functions import create, remove, ls
 def main():
     if system() != 'Linux':
         raise WrongOSError('This utility working only on Linux platform!')
+    if os.getuid() != 0:
+        raise Exception('Call script with sudo privilege')
+
+    scripts = {
+        'create': 'Creates a new domain',
+        'remove': 'Removes domain config',
+        'ls': 'Shows the list of domains',
+    }
+
+    if len(sys.argv) == 1:
+        for script in scripts:
+            print(script, ' - ', scripts[script])
+
+        return
 
     args = sys.argv[1:]
     command = args[0].lower()
-
-    os.system('clear')
 
     if command == 'create':
         domain = args[1].strip()
